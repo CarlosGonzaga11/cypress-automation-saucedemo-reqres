@@ -16,10 +16,7 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Executar testes Cypress
         uses: cypress-io/github-action@v6
-        with:
-          build: npm run build
-          # Como é uma app externa (SauceDemo e ReqRes), não precisamos de subir servidor local
