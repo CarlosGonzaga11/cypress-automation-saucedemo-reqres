@@ -1,1 +1,0 @@
-cy.login("standard_user", "secret_sauce");
