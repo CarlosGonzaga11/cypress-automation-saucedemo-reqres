@@ -1,0 +1,25 @@
+name: End-to-end & API Tests (Cypress)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Executar testes Cypress
+        uses: cypress-io/github-action@v6
+        with:
+          build: npm run build
+          # Como é uma app externa (SauceDemo e ReqRes), não precisamos de subir servidor local
