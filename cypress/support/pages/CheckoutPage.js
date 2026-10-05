@@ -19,15 +19,27 @@ class CheckoutPage {
   get finishBtn() {
     return cy.get('[data-test="finish"]');
   }
+  get errorMessage() {
+    return cy.get('[data-test="error"]');
+  }
 
   get completeHeader() {
     return cy.get('[data-test="complete-header"]');
   }
 
   fillCheckoutForm(firstName, lastName, postalCode) {
-    this.firstNameInput.type(firstName);
-    this.lastNameInput.type(lastName);
-    this.postalCodeInput.type(postalCode);
+    if (firstName && firstName.length > 0) {
+      this.firstNameInput.type(firstName);
+    }
+
+    if (lastName && lastName.length > 0) {
+      this.lastNameInput.type(lastName);
+    }
+
+    if (postalCode && postalCode.length > 0) {
+      this.postalCodeInput.type(postalCode);
+    }
+
     this.continueBtn.click();
   }
 

@@ -19,4 +19,30 @@ describe("Fluxo de Checkout E2E com POM", () => {
       .should("be.visible")
       .should("contain", "Thank you for your order!");
   });
+  it("Deve exibir mensagem de erro ao tentar avançar checkout sem preencher primeiro nome",()=>{
+    LoginPage.login("standard_user","secret_sauce")
+
+    InventoryPage.addBackpackToCart()
+    InventoryPage.goToCart()
+    InventoryPage.goToCheckout()
+
+    CheckoutPage.fillCheckoutForm("","","")
+    CheckoutPage.errorMessage
+      .should("be.visible")
+      .should("contain", "Error: First Name is required");
+  
+  })
+    it("Deve exibir mensagem de erro ao tentar avançar checkout sem preencher CEP",()=>{
+    LoginPage.login("standard_user","secret_sauce")
+
+    InventoryPage.addBackpackToCart()
+    InventoryPage.goToCart()
+    InventoryPage.goToCheckout()
+
+    CheckoutPage.fillCheckoutForm("CARLOS","GONZAGA","")
+    CheckoutPage.errorMessage
+      .should("be.visible")
+      .should("contain", "Error: Postal Code is required");
+  
+  })
 });
