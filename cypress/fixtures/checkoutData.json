@@ -1,0 +1,12 @@
+{
+  "validCustomer": {
+    "firstName": "Carlos",
+    "lastName": "Gonzaga",
+    "postalCode": "12345-678"
+  },
+  "errorMessages": {
+    "firstNameRequired": "Error: First Name is required",
+    "lastNameRequired": "Error: Last Name is required",
+    "postalCodeRequired": "Error: Postal Code is required"
+  }
+}
