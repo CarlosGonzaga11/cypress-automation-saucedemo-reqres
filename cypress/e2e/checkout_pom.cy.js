@@ -32,6 +32,19 @@ describe("Fluxo de Checkout E2E com POM", () => {
       .should("contain", "Error: First Name is required");
   
   })
+      it("Deve exibir mensagem de erro ao tentar avançar checkout sem preencher SOBRENOME",()=>{
+    LoginPage.login("standard_user","secret_sauce")
+
+    InventoryPage.addBackpackToCart()
+    InventoryPage.goToCart()
+    InventoryPage.goToCheckout()
+
+    CheckoutPage.fillCheckoutForm("CARLOS","","1234567")
+    CheckoutPage.errorMessage
+      .should("be.visible")
+      .should("contain", "Error: Last Name is required");
+  
+  })
     it("Deve exibir mensagem de erro ao tentar avançar checkout sem preencher CEP",()=>{
     LoginPage.login("standard_user","secret_sauce")
 
